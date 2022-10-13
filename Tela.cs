@@ -1,4 +1,5 @@
-﻿using tabuleiro;
+﻿using System.Net.NetworkInformation;
+using tabuleiro;
 
 namespace JogoXadrez
 {
@@ -8,6 +9,7 @@ namespace JogoXadrez
         {
             for(int i = 0; i < tab.Linhas; i++)
             {
+                Console.Write(8 - i + " ");
                 for(int j = 0; j < tab.Colunas; j++)
                 {
                     if(tab.GetPeca(i, j) == null)
@@ -16,11 +18,28 @@ namespace JogoXadrez
                     }
                     else
                     {
-                        Console.Write(tab.GetPeca(i, j) + " ");
+                        Tela.ImprimirPeca(tab.Peca(new Posicao(i, j)));
                     }
                     
                 }
                 Console.WriteLine();
+            }
+
+            Console.WriteLine("  a b c d e f g h");
+        }
+
+        public static void ImprimirPeca(Peca peca)
+        {
+            if(peca.Cor == Cor.Branca)
+            {
+                Console.Write(peca);
+            }
+            else
+            {
+                ConsoleColor aux = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(peca);
+                Console.ForegroundColor = aux;
             }
         }
     }
