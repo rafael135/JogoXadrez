@@ -8,7 +8,7 @@ namespace JogoXadrez
         {
             Tabuleiro tab = new Tabuleiro(8, 8);
 
-            Console.WriteLine();
+            Tela.ImprimirTabuleiro(tab);
         }
     }
 }
