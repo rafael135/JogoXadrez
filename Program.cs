@@ -7,6 +7,8 @@ namespace JogoXadrez
     {
         static void Main(string[] args)
         {
+            
+
             try
             {
                 PartidaXadrez partida = new PartidaXadrez();
@@ -20,6 +22,13 @@ namespace JogoXadrez
 
                     Console.Write("Origem: ");
                     Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+
+                    bool[,] posicoesPossiveis = partida.tab.Peca(origem).MovimentosPossiveis();
+
+                    Console.Clear(); // Limpo a tela para imprimir as possíveis posições
+                    Tela.ImprimirTabuleiro(partida.tab, posicoesPossiveis);
+
+                    Console.WriteLine();
                     Console.Write("Destino: ");
                     Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
 
