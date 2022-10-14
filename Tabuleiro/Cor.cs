@@ -2,11 +2,7 @@
 {
     internal enum Cor
     {
-        Branca,
-        Preta,
-        Amarela,
-        Vermelha,
-        Verde,
-        Laranja
+        Branco,
+        Preto   
     }
 }

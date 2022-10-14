@@ -65,14 +65,14 @@ namespace JogoXadrez
             }
             else
             {
-                if (peca.Cor == Cor.Branca)
+                if (peca.Cor == Cor.Branco)
                 {
                     Console.Write(peca);
                 }
                 else
                 {
                     ConsoleColor aux = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write(peca);
                     Console.ForegroundColor = aux;
                 }
