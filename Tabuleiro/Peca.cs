@@ -1,4 +1,6 @@
-﻿namespace tabuleiro
+﻿using System.Net.Http.Headers;
+
+namespace tabuleiro
 {
     internal abstract class Peca
     {
@@ -18,6 +20,28 @@
         public void IncrementarQteMovimentos()
         {
             qteMovimentos++;
+        }
+
+        public bool ExisteMovimentosPossiveis()
+        {
+            bool[,] mat = MovimentosPossiveis();
+            for(int i = 0; i < tab.Linhas; i++)
+            {
+                for(int j = 0; j < tab.Colunas; j++)
+                {
+                    if (mat[i, j] == true)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public bool PodeMoverPara(Posicao pos)
+        {
+            return MovimentosPossiveis()[pos.Linha, pos.Coluna];
         }
 
         public abstract bool[,] MovimentosPossiveis();
