@@ -2,12 +2,12 @@
 
 namespace tabuleiro
 {
-    internal abstract class Peca
+    internal abstract class Peca // Superclasse usada para representar genericamente todas as peças
     {
-        public Posicao Posicao { get; set; }
-        public Cor Cor { get; protected set; }
-        public int qteMovimentos { get; protected set; }
-        public Tabuleiro tab { get; protected set; }
+        public Posicao Posicao { get; set; } // Posição da peça
+        public Cor Cor { get; protected set; } // Cor da peça
+        public int qteMovimentos { get; protected set; } // Quantidade de movimentos que a peça realizou
+        public Tabuleiro tab { get; protected set; } // Tabuleiro em que a peça está presente
 
         public Peca(Tabuleiro tab, Cor cor)
         {
@@ -20,6 +20,11 @@ namespace tabuleiro
         public void IncrementarQteMovimentos()
         {
             qteMovimentos++;
+        }
+
+        public void DecrementarQteMovimentos()
+        {
+            qteMovimentos--;
         }
 
         public bool ExisteMovimentosPossiveis()

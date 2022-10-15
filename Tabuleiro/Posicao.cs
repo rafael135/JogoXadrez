@@ -11,7 +11,7 @@
             this.Coluna = coluna;
         }
 
-        public void DefinirValores(int linha, int coluna)
+        public void DefinirValores(int linha, int coluna) // Método para definir novos valores à posição
         {
             this.Linha = linha;
             this.Coluna = coluna;
