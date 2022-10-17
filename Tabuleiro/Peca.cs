@@ -44,9 +44,9 @@ namespace tabuleiro
             return false;
         }
 
-        public bool PodeMoverPara(Posicao pos)
+        public bool MovimentoPossivel(Posicao pos) // Verifica se a posição informada para a peça é possível de ser feito
         {
-            return MovimentosPossiveis()[pos.Linha, pos.Coluna];
+            return MovimentosPossiveis()[pos.Linha, pos.Coluna] == true;
         }
 
         public abstract bool[,] MovimentosPossiveis();
