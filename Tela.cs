@@ -14,14 +14,22 @@ namespace JogoXadrez
             ImprimirPecasCapturadas(partida);
             Console.WriteLine();
             Console.WriteLine("Turno: {0}", partida.Turno);
-            Console.WriteLine("Aguardando jogada: {0}", partida.JogadorAtual);
 
-            if(partida.Xeque == true)
+            if (partida.Terminada != true)
             {
-                Console.WriteLine("XEQUE!");
-            }
 
-            Console.WriteLine();
+                Console.WriteLine("Aguardando jogada: {0}", partida.JogadorAtual);
+
+                if (partida.Xeque == true)
+                {
+                    Console.WriteLine("XEQUE!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("XEQUEMATE!");
+                Console.WriteLine("Vencedor: " + partida.JogadorAtual);
+            }
         }
 
         public static void ImprimirTabuleiro(Tabuleiro tab)
