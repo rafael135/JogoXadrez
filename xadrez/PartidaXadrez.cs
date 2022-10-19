@@ -142,11 +142,26 @@ namespace xadrez
         public void RealizaJogada(Posicao origem, Posicao destino)
         {
             Peca pecaCapturada = ExecutaMovimento(origem, destino); // Executa o movimento e retorna a possível peça que foi capturada
+            Peca p = tab.Peca(destino); // Peça que foi movida
 
             if (EstaEmCheque(JogadorAtual))
             {
                 DesfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Você não pode se colocar em cheque!");
+            }
+
+            // JogadaEspecial Promoção
+            // Faltando implementar opções de escolha para o usuário
+            if (p is Peao)
+            {
+                if(p.Cor == Cor.Branco && destino.Linha == 0 || (p.Cor == Cor.Preto && destino.Linha == 7))
+                {
+                    p = tab.RetirarPeca(destino);
+                    Pecas.Remove(p);
+                    Peca dama = new Dama(tab, p.Cor);
+                    tab.ColocarPeca(dama, destino);
+                    Pecas.Add(dama);
+                }
             }
 
             if (EstaEmCheque(Adversario(JogadorAtual)) == true) // Se a peça do adversário estiver em cheque
@@ -168,7 +183,7 @@ namespace xadrez
                 MudaJogador();
             }
 
-            Peca p = tab.Peca(destino); // Peça que foi movida
+            
 
             // JogadaEspecial EnPassant
             if(p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2)) // +2 e -2 pq o peão só pode andar 2 vezes se for seu primeiro movimento
